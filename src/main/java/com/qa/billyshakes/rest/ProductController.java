@@ -18,7 +18,7 @@ public class ProductController {
     }
 
     @GetMapping("/createProduct")
-    public List<Products> getAllAccount(){
+    public List<Products> getAllProducts(){
         return this.productsService.readProduct();
     }
 

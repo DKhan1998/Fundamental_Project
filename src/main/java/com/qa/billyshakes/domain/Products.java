@@ -19,7 +19,7 @@ public class Products {
     private int price;
 
     @Column
-    private int Stock;
+    private int stock;
 
     public Products() {
 
@@ -28,7 +28,7 @@ public class Products {
     public Products(String title, int price, int stock) {
         this.title = title;
         this.price = price;
-        Stock = stock;
+        this.stock = stock;
     }
 
     public void setId(Long id) {
@@ -56,11 +56,11 @@ public class Products {
     }
 
     public int getStock() {
-        return Stock;
+        return stock;
     }
 
     public void setStock(int stock) {
-        Stock = stock;
+        this.stock = stock;
     }
 
 

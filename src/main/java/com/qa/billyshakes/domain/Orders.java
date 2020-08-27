@@ -55,13 +55,4 @@ public class Orders {
     public Orders() {
 
     }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    @Id
-    public String getId() {
-        return id;
-    }
 }
