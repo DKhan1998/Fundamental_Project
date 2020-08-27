@@ -17,12 +17,12 @@ public class ProductController {
         this.productsService = productsService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/createProduct")
     public List<Products> getAllAccount(){
         return this.productsService.readProduct();
     }
 
-    @PostMapping("/createAccount")
+    @PostMapping("/createProduct")
     public Products createProduct(@RequestBody Products product){
         return this.productsService.createProducts(product);
     }
