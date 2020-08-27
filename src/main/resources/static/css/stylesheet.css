@@ -1,0 +1,67 @@
+/* Covers the design for the navigation bar */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(185, 185, 185);
+}
+  
+li {
+  float: left;
+}
+  
+li
+a {
+  display: block;
+  color: rgb(43, 43, 43);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+  
+li a:hover {
+  background-color: rgb(121, 121, 121);
+}
+
+.active {
+  background-color: #ffffff;
+}
+
+  /* table content */
+table, th, td {
+  border: 1px solid black;
+  background-color: darkgrey;
+  table-layout: auto;
+  text-align: -moz-right;
+  align-content: center;
+  padding: 5px;
+}
+ /* table row content */
+td {
+    box-shadow: 5px 10px red;
+}
+
+/* this covers the styling for the card view */
+.row{
+    margin: 10px;
+    width: 150px;
+    height: 200px;
+}
+
+.card {
+    background-color: rgb(240, 240, 240);
+    padding: 5px;
+    border-color: darkgrey;
+    border-style: solid;
+    align-content: center;
+    border-radius: 2px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    scale: auto;
+    align-content: center;
+    padding: 15px;
+}
