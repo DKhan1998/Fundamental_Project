@@ -17,14 +17,14 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/allAcc")
     public List<Account> getAllAccount(){
         return this.accountService.readAccount();
     }
 
     @PostMapping("/createAccount")
     public Account createAccount(@RequestBody Account account){
-        return  this.accountService.createAccount(account);
+        return this.accountService.createAccount(account);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -32,13 +32,13 @@ public class AccountController {
         return this.accountService.deleteAccountById(id);
     }
 
-    @GetMapping("/getNoteById/{id}")
+    @GetMapping("/getAccountById/{id}")
     public Account getAccountById(@PathVariable Long id){
         return this.accountService.findAccountById(id);
     }
 
-    @PutMapping("/updateNote/{id}")
-    public Account updateNote(@PathVariable Long id, @RequestBody Account account){
+    @PutMapping("/updateAccount/{id}")
+    public Account updateAccount(@PathVariable Long id, @RequestBody Account account){
         return this.accountService.updateAccount(id, account);
     }
 }

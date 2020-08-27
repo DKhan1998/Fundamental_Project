@@ -8,13 +8,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        /* Remove the navbar default rounded borders and increase the bottom margin */
         .navbar {
             margin-bottom: 50px;
             border-radius: 0;
         }
 
-        /* Remove the jumbotron's default bottom margin */
+        /* Remove the jumbotron default bottom margin */
         .jumbotron {
             margin-bottom: 0;
         }
@@ -47,15 +47,12 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Deals</a></li>
-                <li><a href="#">Stores</a></li>
-                <li><a href="#">Contact</a></li>
+                <li class="active"><a href="../html/index.html">Home</a></li>
+                <li><a href="../html/contact.html">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                <!--<li><a href="../html/user/account.html"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>-->
+                <li><a href="../html/user/orders.html"><span class="glyphicon glyphicon-shopping-cart"></span> Orders</a></li>
             </ul>
         </div>
     </div>
@@ -65,46 +62,20 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="panel panel-primary">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+                <div class="panel-heading">Woman's coat</div>
+                <div class="panel-body"><img src="../images/product1.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">£ 45.00</div>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="panel panel-danger">
                 <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+                <div class="panel-body"><img src="../images/product1.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">£ 56.70</div>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="panel panel-success">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
-        </div>
-    </div>
-</div><br>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
                 <div class="panel-heading">BLACK FRIDAY DEAL</div>
                 <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
                 <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
@@ -116,7 +87,9 @@
 <footer class="container-fluid text-center">
     <p>Online Store Copyright</p>
     <form class="form-inline">Get deals:
-        <input type="email" class="form-control" size="50" placeholder="Email Address">
+        <label>
+            <input type="email" class="form-control" size="50" placeholder="Email Address">
+        </label>
         <button type="button" class="btn btn-danger">Sign Up</button>
     </form>
 </footer>
