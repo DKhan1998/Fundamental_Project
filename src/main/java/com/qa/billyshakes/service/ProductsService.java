@@ -1,9 +1,7 @@
 package com.qa.billyshakes.service;
 
-import com.qa.billyshakes.domain.Account;
 import com.qa.billyshakes.domain.Products;
 import com.qa.billyshakes.exceptions.error404;
-import com.qa.billyshakes.repo.AccountRepository;
 import com.qa.billyshakes.repo.ProductsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

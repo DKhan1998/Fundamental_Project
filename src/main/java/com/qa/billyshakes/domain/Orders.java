@@ -1,19 +1,25 @@
 package com.qa.billyshakes.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "notes"})
 public class Orders {
+
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
 
     @Column
     private String fk_userID;
+
+    @OneToMany(mappedBy = "orders", fetch = FetchType.EAGER)
+    private List<Products> products = new ArrayList<>();
 
     @Column
     @GeneratedValue
@@ -21,6 +27,10 @@ public class Orders {
 
     @Column
     private String status;
+
+    public Orders() {
+
+    }
 
     public Orders(String fk_userID, Date orderDate, String status) {
         this.fk_userID = fk_userID;
@@ -52,7 +62,11 @@ public class Orders {
         this.status = status;
     }
 
-    public Orders() {
+    public List<Products> getProducts(){
+        return products;
+    }
 
+    public void setProducts(List<Products> products){
+        this.products = products;
     }
 }
