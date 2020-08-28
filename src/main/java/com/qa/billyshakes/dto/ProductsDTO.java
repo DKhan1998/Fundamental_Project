@@ -1,34 +1,20 @@
-package com.qa.billyshakes.domain;
+package com.qa.billyshakes.dto;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
-@Entity
-public class Products {
+public class ProductsDTO {
 
-    @Id
-    @GeneratedValue
     private Long id;
-
-    @Column
     private String title;
-
-    @Column
     private String description;
-
-    @Column
     private int price;
-
-    @Column
     private int stock;
 
-    public Products() {
+    public ProductsDTO() {
 
     }
 
-    public Products(String title, String description, int price, int stock) {
+    public ProductsDTO(String title, int price, int stock, String description) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -74,6 +60,4 @@ public class Products {
     public void setStock(int stock) {
         this.stock = stock;
     }
-
-
 }

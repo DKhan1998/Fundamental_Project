@@ -15,8 +15,8 @@ public class Orders {
     @GeneratedValue
     private Long id;
 
-    @Column
-    private String fk_userID;
+//    @Column
+//    private String fk_userID;
 
     @OneToMany(mappedBy = "orders", fetch = FetchType.EAGER)
     private List<Products> products = new ArrayList<>();
@@ -33,18 +33,18 @@ public class Orders {
     }
 
     public Orders(String fk_userID, Date orderDate, String status) {
-        this.fk_userID = fk_userID;
+//        this.fk_userID = fk_userID;
         this.orderDate = orderDate;
         this.status = status;
     }
 
-    public String getFk_userID() {
-        return fk_userID;
-    }
-
-    public void setFk_userID(String fk_userID) {
-        this.fk_userID = fk_userID;
-    }
+//    public String getFk_userID() {
+//        return fk_userID;
+//    }
+//
+//    public void setFk_userID(String fk_userID) {
+//        this.fk_userID = fk_userID;
+//    }
 
     public Date getOrderDate() {
         return orderDate;
