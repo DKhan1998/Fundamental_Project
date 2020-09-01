@@ -15,42 +15,36 @@ public class Orders {
     @GeneratedValue
     private Long id;
 
-//    @Column
-//    private String fk_userID;
-
     @OneToMany(mappedBy = "orders", fetch = FetchType.EAGER)
     private List<Products> products = new ArrayList<>();
 
     @Column
     @GeneratedValue
-    private Date orderDate;
+    private String orderDate;
 
     @Column
     private String status;
+
+//    @Column
+//    private int quantity;
+
+//    @Column
+//    private double overallPrice;
 
     public Orders() {
 
     }
 
-    public Orders(String fk_userID, Date orderDate, String status) {
-//        this.fk_userID = fk_userID;
+    public Orders(String orderDate, String status) {
         this.orderDate = orderDate;
         this.status = status;
     }
 
-//    public String getFk_userID() {
-//        return fk_userID;
-//    }
-//
-//    public void setFk_userID(String fk_userID) {
-//        this.fk_userID = fk_userID;
-//    }
-
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 

@@ -30,7 +30,7 @@ public class OrdersController {
         return new ResponseEntity<>(this.ordersService.createOrders(orders), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deleteOrder/{id}")
     public Boolean deleteOrders(@PathVariable Long id){
         return this.ordersService.deleteOrdersById(id);
     }

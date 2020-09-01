@@ -21,7 +21,7 @@ public class ProductController {
         this.productsService = productsService;
     }
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/allProducts")
     public ResponseEntity<List<ProductsDTO>> getAllProducts(){
         return ResponseEntity.ok(this.productsService.readProducts());
     }
@@ -31,7 +31,7 @@ public class ProductController {
         return new ResponseEntity<>(this.productsService.createProducts(product), HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/deleteProduct/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id){
         return this.productsService.deleteProductById(id)
                 ?  ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()

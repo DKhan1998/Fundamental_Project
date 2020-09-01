@@ -1,9 +1,6 @@
 package com.qa.billyshakes.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Products {
@@ -23,6 +20,10 @@ public class Products {
 
     @Column
     private int stock;
+
+    @ManyToOne(targetEntity = Orders.class)
+    private Orders orders;
+
 
     public Products() {
 
@@ -75,5 +76,11 @@ public class Products {
         this.stock = stock;
     }
 
+    public Orders getOrders() {
+        return orders;
+    }
 
+    public void setOrders(Orders orders) {
+        this.orders = orders;
+    }
 }
