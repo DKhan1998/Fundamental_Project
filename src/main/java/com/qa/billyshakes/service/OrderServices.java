@@ -1,42 +1,52 @@
 package com.qa.billyshakes.service;
 
 import com.qa.billyshakes.domain.Orders;
+import com.qa.billyshakes.dto.OrdersDTO;
 import com.qa.billyshakes.exceptions.error404;
 import com.qa.billyshakes.repo.OrdersRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderServices {
     private final OrdersRepository oRepo;
 
+    private final ModelMapper mapper;
+
     @Autowired
-    public OrderServices(OrdersRepository oRepo) {
+    public OrderServices(OrdersRepository oRepo, ModelMapper mapper) {
         this.oRepo = oRepo;
+        this.mapper = mapper;
     }
 
-    public List<Orders> readOrders(){
-        return this.oRepo.findAll();
+    public OrdersDTO mapToDTO(Orders orders){
+        return this.mapper.map(orders, OrdersDTO.class);
     }
 
-    public Orders createOrders(Orders orders){
-        return this.oRepo.save(orders);
+    public List<OrdersDTO> readOrders(){
+        return this.oRepo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-    public Orders findOrdersById(Long id){
-        return this.oRepo.findById(id).orElseThrow(error404::new);
+    public OrdersDTO createOrders(Orders orders){
+        return this.mapToDTO(this.oRepo.save(orders));
     }
 
-    public Orders updateOrders(Long id, Orders orders){
-        Orders update = findOrdersById(id);
+    public OrdersDTO findOrdersById(Long id){
+        return this.mapToDTO(this.oRepo.findById(id).orElseThrow(error404::new));
+    }
+
+    public OrdersDTO updateOrders(Long id, Orders orders){
+        Orders update = this.oRepo.findById(id).orElseThrow(error404::new);
 //        update.setEmail(orders.getEmail());
 //        update.setPassword(orders.getPassword());
 //        update.setFirstname(orders.getFirstname());
 //        update.setLastname(orders.getLastname());
 //        update.setUsername(orders.getUsername());
-        return this.oRepo.save(update);
+        return this.mapToDTO(this.oRepo.save(update));
     }
 
     public Boolean deleteOrdersById(Long id){
