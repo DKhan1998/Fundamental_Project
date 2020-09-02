@@ -3,9 +3,8 @@ function displayProducts() {
     req.onreadystatechange = () => {
         // Example Handle Logic
         if (req.status === 200 && req.readyState === 4) {
-            console.log("nice" + req.readyState);
+
             if (req.getResponseHeader("Content-Type") === "application/json") {
-                console.log("successful response JSON: " + req.responseText);
 
                 //create elements
                 let container = document.createElement('div');
@@ -29,7 +28,7 @@ function displayProducts() {
                     title.setAttribute("class", "panel-heading");       // Create a "class" attribute#
 
                     let image = document.createElement('div');// new description -> i want this to b
-                    image.setAttribute("class" + "width" + "height", "panel-body" + "80px" + "80px");// Create a "class" attribute
+                    image.setAttribute("class" + "max-scale", "panel-body" + "fit-content");// Create a "class" attribute
 
                     let description = document.createElement('div');// new description -> i want this to b
                     description.setAttribute("class", "panel-body");// Create a "class" attribute
@@ -37,19 +36,19 @@ function displayProducts() {
                     let price = document.createElement('div');
                     price.setAttribute("class", "panel-footer");// Create a "class" attribute
 
-
                     // Set content to respective ids
                     title.textContent = product.title;
                     description.textContent = "Description: " + product.description;
                     price.textContent = "£ " + product.price;
-                    image.src = product.image;
-
+                    let img = new Image();
+                    img.src = product.image;
 
                     // create indented items
                     container.appendChild(divElement);
                     divElement.appendChild(column);
                     column.appendChild(panel);
                     panel.appendChild(title);
+                    panel.appendChild(img);
                     panel.appendChild(description);
                     panel.appendChild(price);
                 });
@@ -67,7 +66,7 @@ function displayProducts() {
 }
 
 function createProduct(){
-    let elements = document.getElementById("productsForm").elements;
+    let elements = document.getElementById("productForm").elements;
     let obj = {};
     for(let i = 0 ; i < elements.length - 1 ; i++){
         let item = elements.item(i);
@@ -84,5 +83,5 @@ function createProduct(){
         }
     };
     req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    req.send(JSON.stringify({ title: obj.title, description: obj.description, image: obj.image, price: obj.price, stock: obj.stock, product:{ id: Number(obj.productid)} }));
+    req.send(JSON.stringify({title: obj.title, image: obj.image, description: obj.description, price: obj.price, stock: obj.stock}));
 }

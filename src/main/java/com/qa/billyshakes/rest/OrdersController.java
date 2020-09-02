@@ -30,18 +30,18 @@ public class OrdersController {
         return new ResponseEntity<>(this.ordersService.createOrders(orders), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/deleteOrder/{id}")
-    public Boolean deleteOrders(@PathVariable Long id){
-        return this.ordersService.deleteOrdersById(id);
+    @DeleteMapping("/deleteOrder/{orderId}")
+    public Boolean deleteOrders(@PathVariable Long orderId){
+        return this.ordersService.deleteOrdersById(orderId);
     }
 
-    @GetMapping("/getOrdersById/{id}")
-    public ResponseEntity<OrdersDTO> getOrdersById(@PathVariable Long id){
-        return ResponseEntity.ok(this.ordersService.findOrdersById(id));
+    @GetMapping("/getOrdersById/{orderId}")
+    public ResponseEntity<OrdersDTO> getOrdersById(@PathVariable Long orderId){
+        return ResponseEntity.ok(this.ordersService.findOrdersById(orderId));
     }
 
-    @PutMapping("/updateOrders/{id}")
-    public ResponseEntity<OrdersDTO> updateOrders(@PathVariable Long id, @RequestBody Orders orders){
-        return ResponseEntity.ok(this.ordersService.updateOrders(id, orders));
+    @PutMapping("/updateOrders/{orderId}")
+    public ResponseEntity<OrdersDTO> updateOrders(@PathVariable Long orderId, @RequestBody Orders orders){
+        return ResponseEntity.ok(this.ordersService.updateOrders(orderId, orders));
     }
 }

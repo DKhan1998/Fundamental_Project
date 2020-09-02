@@ -78,7 +78,7 @@
         <h1>Add new product</h1>
 
         <div class="container">
-            <form id="productsForm">
+            <form id="productForm" action="../../html/index.html">
                 <div class="row">
                     <div class="col-25">
                         <label for="title">Product Title : </label>
@@ -101,11 +101,11 @@
                     </div>
                     <div class="col-75">
                         <select id="image" name="image">
-                            <option value="../../image/product1.jpg">Monster</option>
-                            <option value="../../image/product2.jpg">Strawberry</option>
-                            <option value=../../image/product3.jpg">Vanilla</option>
-                            <option value=../../image/product4.jpg">Blueberry</option>
-                            <option value=../../image/product5.jpg">Oreo</option>
+                            <option value="/../../images/product1.jpg">Monster</option>
+                            <option value="/../../images/product2.jpg">Strawberry</option>
+                            <option value="/../../images/product3.jpg">Vanilla</option>
+                            <option value="/../../images/product4.jpg">Blueberry</option>
+                            <option value="/../../images/product5.jpg">Oreo</option>
                         </select>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Submit" onclick="createProduct()">
                 </div>
             </form>
         </div>

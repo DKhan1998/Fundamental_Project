@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OrdersDTO {
 
-    private Long id;
+    private Long orderId;
     private String date;
     private List<ProductsDTO> products = new ArrayList<>();
     private String Status;
@@ -22,11 +22,11 @@ public class OrdersDTO {
     }
 
     public Long getId() {
-        return id;
+        return orderId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public String getDate() {

@@ -32,7 +32,7 @@ public class ProductsService {
         return this.pRepo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-    public ProductsDTO createProducts(Products products){
+    public ProductsDTO createProduct(Products products){
         return this.mapToDTO(this.pRepo.save(products));
     }
 

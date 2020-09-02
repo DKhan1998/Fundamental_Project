@@ -13,7 +13,7 @@ public class Orders {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long orderId;
 
     @OneToMany(mappedBy = "orders", fetch = FetchType.EAGER)
     private List<Products> products = new ArrayList<>();
