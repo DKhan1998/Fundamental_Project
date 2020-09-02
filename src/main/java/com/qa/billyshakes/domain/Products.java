@@ -16,10 +16,13 @@ public class Products {
     private String description;
 
     @Column
-    private int price;
+    private double price;
 
     @Column
     private int stock;
+
+    @Column
+    private String image;
 
     @ManyToOne(targetEntity = Orders.class)
     private Orders orders;
@@ -29,8 +32,9 @@ public class Products {
 
     }
 
-    public Products(String title, String description, int price, int stock) {
+    public Products(String title, String image, String description, double price, int stock) {
         this.title = title;
+        this.image = image;
         this.description = description;
         this.price = price;
         this.stock = stock;
@@ -60,12 +64,20 @@ public class Products {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getStock() {

@@ -23,10 +23,20 @@ html {
 /* Remove the jumbotron default bottom margin */
 .jumbotron {
     margin-bottom: 0;
+    background-image: url("../images/background.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
 /* Add a gray background color and some padding to the footer */
 footer {
-    background-color: #f2f2f2;
     padding: 25px;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+

@@ -45,6 +45,7 @@ public class ProductsService {
         Products update = this.pRepo.findById(id)
                 .orElseThrow(error404::new);
         update.setTitle(products.getTitle());
+        update.setImage(products.getImage());
         update.setDescription(products.getDescription());
         update.setPrice(products.getPrice());
         update.setStock(products.getStock());

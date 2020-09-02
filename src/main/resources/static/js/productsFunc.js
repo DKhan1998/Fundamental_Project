@@ -28,6 +28,9 @@ function displayProducts() {
                     let title = document.createElement('div'); // new title
                     title.setAttribute("class", "panel-heading");       // Create a "class" attribute#
 
+                    let image = document.createElement('div');// new description -> i want this to b
+                    image.setAttribute("class" + "width" + "height", "panel-body" + "80px" + "80px");// Create a "class" attribute
+
                     let description = document.createElement('div');// new description -> i want this to b
                     description.setAttribute("class", "panel-body");// Create a "class" attribute
 
@@ -39,6 +42,8 @@ function displayProducts() {
                     title.textContent = product.title;
                     description.textContent = "Description: " + product.description;
                     price.textContent = "£ " + product.price;
+                    image.src = product.image;
+
 
                     // create indented items
                     container.appendChild(divElement);
@@ -59,4 +64,25 @@ function displayProducts() {
     }; // append all products
     req.open("GET", "http://localhost:8080/allProducts");
     req.send();
+}
+
+function createProduct(){
+    let elements = document.getElementById("productsForm").elements;
+    let obj = {};
+    for(let i = 0 ; i < elements.length - 1 ; i++){
+        let item = elements.item(i);
+        obj[item.name] = item.value;
+    }
+
+    const req = new XMLHttpRequest();
+    req.open("POST", "http://localhost:8080/createProduct");
+    req.onload = () => {
+        if (req.status === 200 && req.readyState === 4) {
+            console.log("Server Responded with: " + req.responseText);
+        } else {
+            console.log("Oops...");
+        }
+    };
+    req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    req.send(JSON.stringify({ title: obj.title, description: obj.description, image: obj.image, price: obj.price, stock: obj.stock, product:{ id: Number(obj.productid)} }));
 }

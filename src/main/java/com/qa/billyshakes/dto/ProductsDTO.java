@@ -7,15 +7,17 @@ public class ProductsDTO {
     private Long id;
     private String title;
     private String description;
-    private int price;
+    private String image;
+    private double price;
     private int stock;
 
     public ProductsDTO() {
 
     }
 
-    public ProductsDTO(String title, int price, int stock, String description) {
+    public ProductsDTO(String title, String image, double price, int stock, String description) {
         this.title = title;
+        this.image = image;
         this.description = description;
         this.price = price;
         this.stock = stock;
@@ -45,7 +47,15 @@ public class ProductsDTO {
         this.description = description;
     }
 
-    public int getPrice() {
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public double getPrice() {
         return price;
     }
 
