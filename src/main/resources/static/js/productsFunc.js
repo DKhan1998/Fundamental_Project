@@ -19,7 +19,7 @@ function displayProducts() {
                     column.setAttributeNode(attCol);
 
                     // set values
-                    el.product.forEach(product => {
+                    el.forEach(product => {
                         console.log(product) // print all notes for each notebook
 
                         let panel = document.createElement('div')// new panel item
