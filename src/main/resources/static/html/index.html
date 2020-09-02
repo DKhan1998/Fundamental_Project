@@ -5,35 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!--<link rel="stylesheet" href="../css/stylesheet.css">-->
+<!--External css button for cool purposes-->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+<!--Actual css file for button, html page and other things-->
+    <link rel="stylesheet" href="../css/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="../js/productsFunc.js"></script>
-    <style>
-        /* Remove the navbar default rounded borders and increase the bottom margin */
-        .navbar {
-            margin-bottom: 50px;
-            border-radius: 0;
-        }
-
-        /* Remove the jumbotron default bottom margin */
-        .jumbotron {
-            margin-bottom: 0;
-        }
-
-        /* Add a gray background color and some padding to the footer */
-        footer {
-            background-color: #f2f2f2;
-            padding: 25px;
-        }
-    </style>
 </head>
 <body onload="displayProducts()">
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>Billy Shakes</h1>
-        <p>Quality Shakes, Coffee & More</p>
+        <h1 style="font-family: 'Cute Cartoon',sans-serif">Billy Shakes</h1>
+        <p style="font-family: 'Cute Cartoon',sans-serif">Quality Shakes, Coffee & More</p>
     </div>
 </div>
 
@@ -45,10 +30,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand" href="#" style="font-family: 'Cute Cartoon',sans-serif">BS</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
+                <li><a href="../html/products/addProduct.html" class="button"> + Add Listing </a></li>
                 <li class="active"><a href="../html/index.html">Home</a></li>
                 <li><a href="../html/contact.html">Contact</a></li>
             </ul>
@@ -59,42 +45,5 @@
         </div>
     </div>
 </nav>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="panel panel-success">
-                <div class="panel-heading">Got a Product to Sell?</div>
-                <div class="panel-body"><img src="../images/add-icon.png" class="img-responsive" style="width:100%" alt="Image"></div>
-                <div class="panel-footer"><a href="../html/products/addProduct.html">Add Product Here</a></div>
-            </div>
-        </div>
-<!--        <div class="col-sm-4">-->
-<!--            <div class="panel panel-primary">-->
-<!--                <div class="panel-heading">Woman's coat</div>-->
-<!--                <div class="panel-body"><img src="../images/product1.jpg" class="img-responsive" style="width:100%" alt="Image"></div>-->
-<!--                <div class="panel-footer">£ 45.00</div>-->
-
-<!--        </div>-->
-<!--        <div class="col-sm-4">-->
-<!--            <div class="panel panel-danger">-->
-<!--                <div class="panel-heading">BLACK FRIDAY DEAL - Woman's Fleece</div>-->
-<!--                <div class="panel-body"><img src="../images/product1.jpg" class="img-responsive" style="width:100%" alt="Image"></div>-->
-<!--                <div class="panel-footer">£ 56.70</div>-->
-<!--            </div>-->
-<!--        </div>-->
-    </div>
-</div><br><br>
-
-<footer class="container-fluid text-center">
-    <p>Online Store Copyright</p>
-    <form class="form-inline">Get deals:
-        <label>
-            <input type="email" class="form-control" size="50" placeholder="Email Address">
-        </label>
-        <button type="button" class="btn btn-danger">Sign Up</button>
-    </form>
-</footer>
-
 </body>
 </html>

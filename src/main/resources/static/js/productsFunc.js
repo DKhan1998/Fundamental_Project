@@ -7,48 +7,46 @@ function displayProducts() {
             if (req.getResponseHeader("Content-Type") === "application/json") {
                 console.log("successful response JSON: " + req.responseText);
 
+                //create elements
+                let container = document.createElement('div');
+                container.setAttribute("class", "container");
+                document.body.appendChild(container);
 
                 let stuff = JSON.parse(req.response);
-                stuff.forEach(el => {
-                    console.log("oh look its some JSON: " + req.responseText);
-                    let divElement = document.getElementsByClassName("row");
+                stuff.forEach(product => {
+                    console.log("oh look its some JSON: " + req.response);
+                    //create elements
+                    let divElement = document.createElement('div');
+                    divElement.setAttribute("class", "row");
                     // adding title to the body of the page
-                    let column = document.createElement('div')// create column item
-                    let attCol= document.createAttribute("class");// Create a "class" attribute
-                    attCol.value = "col-sm-4";// Set the value of the class attribute
-                    column.setAttributeNode(attCol);
+                    let column = document.createElement('div');
+                    column.setAttribute("class", "col-sm-4");// create column item
 
-                    // set values
-                    el.forEach(product => {
-                        console.log(product) // print all notes for each notebook
+                    let panel = document.createElement('div');// new panel item
+                    panel.setAttribute("class", "panel panel-success");// Create a "class" attribute
 
-                        let panel = document.createElement('div')// new panel item
-                        let attPan  = document.createAttribute("class");// Create a "class" attribute
-                        attPan.value = "panel panel-success";// Set the value of the class attribute
-                        panel.setAttributeNode(attPan);
-                        let title = document.createElement('div'); // new title
-                        let attTitle  = document.createAttribute("class");       // Create a "class" attribute
-                        attTitle.value = "panel-heading";// Set the value of the class attribute
-                        title.setAttributeNode(attTitle);
-                        let description = document.createElement('div');// new description -> i want this to b
-                        let attDes  = document.createAttribute("class");// Create a "class" attribute
-                        attDes.value = "panel-body";// Set the value of the class attribute
-                        panel.setAttributeNode(attDes);
-                        let  price = document.createElement('div');
-                        let attPrice  = document.createAttribute("class");// Create a "class" attribute
-                        attPrice.value = "panel-body";// Set the value of the class attribute
-                        panel.setAttributeNode(attPrice);
+                    let title = document.createElement('div'); // new title
+                    title.setAttribute("class", "panel-heading");       // Create a "class" attribute#
 
-                        title.textContent = product.title;
-                        description.textContent = "Description: " + product.description;
-                        price.textContent = "£ " + product.price;
-                        divElement.appendChild(column);
-                        column.appendChild(panel);
-                        panel.appendChild(title);
-                        panel.appendChild(description);
-                        panel.appendChild(price);
-                    })
-                    document.div.appendChild(divElement);
+                    let description = document.createElement('div');// new description -> i want this to b
+                    description.setAttribute("class", "panel-body");// Create a "class" attribute
+
+                    let price = document.createElement('div');
+                    price.setAttribute("class", "panel-footer");// Create a "class" attribute
+
+
+                    // Set content to respective ids
+                    title.textContent = product.title;
+                    description.textContent = "Description: " + product.description;
+                    price.textContent = "£ " + product.price;
+
+                    // create indented items
+                    container.appendChild(divElement);
+                    divElement.appendChild(column);
+                    column.appendChild(panel);
+                    panel.appendChild(title);
+                    panel.appendChild(description);
+                    panel.appendChild(price);
                 });
             } else {
                 console.log(
