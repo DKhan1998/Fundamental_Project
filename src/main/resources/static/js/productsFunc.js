@@ -39,6 +39,21 @@ function displayProducts() {
                     let price = document.createElement('div');
                     price.setAttribute("class", "panel-footer");// Create a "class" attribute
 
+                    let deleteB = document.createElement("button");
+                    deleteB.setAttribute("id", "delete");
+                    deleteB.setAttribute("class", "button");
+                    deleteB.addEventListener("click", function (){
+                        deleteProduct(product.id);
+                        location.reload();
+                    });
+
+                    let updateB = document.createElement("button");
+                    updateB.setAttribute("id", "update");
+                    updateB.setAttribute("class", "button");
+                    updateB.setAttribute("href", "../html/products/update.html");
+                    updateB.addEventListener("click", function(){
+                        updateGetProduct(product.id);
+                    })
                     // Set content to respective ids
                     title.textContent = product.title;
                     description.textContent = "Description: " + product.description;
@@ -46,7 +61,9 @@ function displayProducts() {
                     let img = new Image();
                     img.src = product.image;
                     img.setAttribute("width", "200px");
+                    img.setAttribute("height", "200px");
                     image.appendChild(img);
+                    deleteB.textContent = "DELETE";
 
 
                     // create indented items
@@ -57,6 +74,7 @@ function displayProducts() {
                     panel.appendChild(image);
                     panel.appendChild(description);
                     panel.appendChild(price);
+                    panel.appendChild(deleteB);
                 });
             } else {
                 console.log(
@@ -71,6 +89,11 @@ function displayProducts() {
     req.send();
 }
 
+/*
+
+THIS IS THE CREATE PRODUCT SECTION
+
+ */
 function createProduct(){
     let elements = document.getElementById("productForm").elements;
     let obj = {};
@@ -84,6 +107,8 @@ function createProduct(){
     req.onload = () => {
         if (req.status === 200 && req.readyState === 4) {
             console.log("Server Responded with: " + req.responseText);
+
+
         } else {
             console.log("Oops...");
         }
@@ -92,9 +117,14 @@ function createProduct(){
     req.send(JSON.stringify({title: obj.title, image: obj.image, description: obj.description, price: obj.price, stock: obj.stock}));
 }
 
+/*
+
+THIS IS THE DELETE PRODUCT SECTION
+
+ */
 function deleteProduct(id){
     const req = new XMLHttpRequest();
-    req.open("DELETE", "http://localhost:8080/deleteProduct/id");
+    req.open("DELETE", "http://localhost:8080/deleteProduct/" + id);
     req.onload = () => {
         if (req.status === 200 && req.readyState === 4) {
             console.log("Server Responded with: " + req.responseText);
@@ -102,6 +132,69 @@ function deleteProduct(id){
             console.log("Oops...");
         }
     };
-    req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    //req.send(JSON.stringify({title: obj.title, image: obj.image, description: obj.description, price: obj.price, stock: obj.stock}));
+    req.send();
+}
+
+/*
+
+THIS IS THE UPDATE PRODUCT SECTION
+
+ */
+function updateGetProduct(id){
+    const reqGet = new XMLHttpRequest();
+    reqGet.open("GET", "http://localhost:8080/getProductById/" + id);
+    reqGet.onload = () => {
+        if (reqGet.status === 200 && reqGet.readyState === 4) {
+                // this loops through the given query
+                let product = JSON.parse(reqGet.response);
+                product.forEach(field => {
+                    console.log("oh look its some JSON: " + req.response);
+                   // populate the fields
+                    let pTitle = document.getElementById("title");
+                    let pPrice = document.getElementById("price");
+                    let pFlavour = document.getElementById("image");
+                    let pStock = document.getElementById("Stock");
+                    let pDesc = document.getElementById("description");
+                    let submit = document.getElementById("submit");
+                    submit.addEventListener("click", function (){
+                        updatePushProduct(field.id);
+                        location.reload();
+                    });
+
+                    // Set content to respective ids
+                    pTitle.textContent = field.title;
+                    pPrice.textContent = field.price;
+                    pFlavour.getElementsByClassName("value").item(field.image);
+                    pStock.textContent = field.stock;
+                    pDesc.textContent = "Description: " + field.description;
+                });
+        } else {
+            console.log("Oh no... handle error");
+        }
+    }; // append all products
+    reqGet.send();
+}
+
+/*
+
+
+
+ */
+function updatePushProduct(){
+    const req = new XMLHttpRequest();
+    req.open("PUT", "http://localhost:8080/updateProduct/" + id);
+    req.onload = () => {
+        if (req.status === 200 && req.readyState === 4) {
+            console.log("Server Responded with: " + req.responseText);
+            let elements = document.getElementById("productForm").elements;
+            let obj = {};
+            for(let i = 0 ; i < elements.length - 1 ; i++){
+                let item = elements.item(i);
+                obj[item.name] = item.value;
+            }
+        } else {
+            console.log("Oops...");
+        }
+    };
+    req.send();
 }
