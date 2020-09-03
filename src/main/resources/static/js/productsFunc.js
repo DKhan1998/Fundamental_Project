@@ -9,7 +9,10 @@ function displayProducts() {
                 //create elements
                 let container = document.createElement('div');
                 container.setAttribute("class", "container");
-                document.body.appendChild(container);
+                //create elements
+                let row = document.createElement('div');
+                row.setAttribute("class", "row");
+                document.getElementById("content").appendChild(container);
 
                 let stuff = JSON.parse(req.response);
                 stuff.forEach(product => {
@@ -28,7 +31,7 @@ function displayProducts() {
                     title.setAttribute("class", "panel-heading");       // Create a "class" attribute#
 
                     let image = document.createElement('div');// new description -> i want this to b
-                    image.setAttribute("class" + "max-scale", "panel-body" + "fit-content");// Create a "class" attribute
+                    image.setAttribute("class", "panel-body");// Create a "class" attribute
 
                     let description = document.createElement('div');// new description -> i want this to b
                     description.setAttribute("class", "panel-body");// Create a "class" attribute
@@ -42,13 +45,16 @@ function displayProducts() {
                     price.textContent = "£ " + product.price;
                     let img = new Image();
                     img.src = product.image;
+                    img.setAttribute("width", "200px");
+                    image.appendChild(img);
+
 
                     // create indented items
                     container.appendChild(divElement);
                     divElement.appendChild(column);
                     column.appendChild(panel);
                     panel.appendChild(title);
-                    panel.appendChild(img);
+                    panel.appendChild(image);
                     panel.appendChild(description);
                     panel.appendChild(price);
                 });
@@ -84,4 +90,18 @@ function createProduct(){
     };
     req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     req.send(JSON.stringify({title: obj.title, image: obj.image, description: obj.description, price: obj.price, stock: obj.stock}));
+}
+
+function deleteProduct(id){
+    const req = new XMLHttpRequest();
+    req.open("DELETE", "http://localhost:8080/deleteProduct/id");
+    req.onload = () => {
+        if (req.status === 200 && req.readyState === 4) {
+            console.log("Server Responded with: " + req.responseText);
+        } else {
+            console.log("Oops...");
+        }
+    };
+    req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    //req.send(JSON.stringify({title: obj.title, image: obj.image, description: obj.description, price: obj.price, stock: obj.stock}));
 }

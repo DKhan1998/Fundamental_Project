@@ -1,37 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Orders</title>
+    <title>BillyShakes</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="../css/stylesheet.css">-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-        /* Remove the navbar default rounded borders and increase the bottom margin */
-        .navbar {
-            margin-bottom: 50px;
-            border-radius: 0;
-        }
-
-        /* Remove the jumbotron default bottom margin */
-        .jumbotron {
-            margin-bottom: 0;
-        }
-
-        /* Add a gray background color and some padding to the footer */
-        footer {
-            background-color: #f2f2f2;
-            padding: 25px;
-        }
-    </style>
+    <!--External css button for cool purposes-->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <!--Actual css file for button, html page and other things-->
+    <link rel="stylesheet" href="/../css/stylesheet.css">
 </head>
-<body>
+<body onload="displayOrders()">
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>Orders</h1>
+        <h1 style="font-family:Cute Cartoon,monospace; font-size: 120px">ORDERS</h1>
+        <p style="font-family: Cute Cartoon,monospace">View your orders and adjust!</p>
     </div>
 </div>
 
@@ -43,54 +27,28 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">BS</a>
+            <a class="navbar-brand" href="#" style="font-family: 'Cute Cartoon',sans-serif; font-size: 45px">BS</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="../index.html">Home</a></li>
+                <li class="active"><a href="../../html/products/addProduct.html" class="button"> + Add Listing </a></li>
+                <li class="active"><a href="../../html/index.html">Home</a></li>
                 <li><a href="../../html/contact.html">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!--<li><a href="../html/user/account.html"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>-->
-                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Orders</a></li>
+                <li><a href="../../html/user/orders.html"><span class="glyphicon glyphicon-shopping-cart"></span> Orders</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="panel panel-success">
-                <div class="panel-heading">Place a new Order</div>
-                <div class="panel-body"><img src="../../images/add-icon.png" class="img-responsive" style="width:100%" alt="Image"></div>
-                <div class="panel-footer"><a href="../index.html">Product Page</a></div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Woman's coat</div>
-                <div class="panel-body"><img src="../../images/product1.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
-                <div class="panel-footer">£ 45.00</div>
-                <div class="panel-footer">Quantity : 5</div>
-                <div class="panel-footer">Overall Price : £ 145.67</div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Woman's Fleece</div>
-                <div class="panel-body"><img src="../../images/product1.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
-                <div class="panel-footer">£ 56.70</div>
-                <div class="panel-footer">Quantity : 2</div>
-                <div class="panel-footer">Overall : £ 45.00</div>
-            </div>
-        </div>
-    </div>
-</div><br><br>
+<div id="content">
 
-<footer class="container-fluid text-center">
-    <p>Online Store Copyright</p>
-</footer>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="../../js/ordersFunc.js"></script>
 
 </body>
 </html>

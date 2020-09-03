@@ -143,11 +143,11 @@ Once they have entered their details they will be redirected to the home page wh
 
 ---
 
-![UML Diagram](images/umlDiagram.png)
+![UML Diagram](umlDiagram.png)
 
 ## ERD Diagram
 
 ---
 
 Here we attempt to design a framework for the database by using an ERD or Entity Relationship Diagram.
-![UML Diagram](images/diagram.png)
+![UML Diagram](diagram.png)

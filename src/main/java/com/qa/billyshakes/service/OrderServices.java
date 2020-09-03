@@ -41,11 +41,11 @@ public class OrderServices {
 
     public OrdersDTO updateOrders(Long id, Orders orders){
         Orders update = this.oRepo.findById(id).orElseThrow(error404::new);
-//        update.setEmail(orders.getEmail());
-//        update.setPassword(orders.getPassword());
-//        update.setFirstname(orders.getFirstname());
-//        update.setLastname(orders.getLastname());
-//        update.setUsername(orders.getUsername());
+        update.setOrderDate(orders.getOrderDate());
+        update.setStatus(orders.getStatus());
+        update.setQuantity(orders.getQuantity());
+        update.setOverallPrice(orders.getOverallPrice());
+        update.setProducts(orders.getProducts());
         return this.mapToDTO(this.oRepo.save(update));
     }
 
