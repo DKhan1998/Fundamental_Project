@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/stylesheet.css">
-    <script src="../../js/productsFunc.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style type="text/css">
         .container {
             border-radius: 5px;
@@ -76,14 +73,14 @@
         }
     </style>
 </head>
-<body>
+<body onload="updateGetProduct()">
 
 <div class="jumbotron">
     <div class="container text-center">
         <h1>Update new product</h1>
 
         <div class="container">
-            <form id="productForm" action="../../html/index.html" onload="updateGetProduct(id)">
+            <form id="productForm" action="../../html/index.html">
                 <div class="row">
                     <div class="col-25">
                         <label for="title">Product Title : </label>
@@ -131,7 +128,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <input type="submit" value="Submit" onclick="updateProduct()">
+                    <input type="submit" value="Submit" id="submit">
                 </div>
             </form>
         </div>
@@ -141,6 +138,8 @@
 <footer class="container-fluid text-center">
     <p>Online Store Copyright</p>
 </footer>
-
+<script src="../../js/productsFunc.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -3,7 +3,6 @@ function displayProducts() {
     req.onreadystatechange = () => {
         // Example Handle Logic
         if (req.status === 200 && req.readyState === 4) {
-
             if (req.getResponseHeader("Content-Type") === "application/json") {
 
                 //create elements
@@ -13,13 +12,11 @@ function displayProducts() {
                 let row = document.createElement('div');
                 row.setAttribute("class", "row");
                 document.getElementById("content").appendChild(container);
+                container.appendChild(row);
 
                 let stuff = JSON.parse(req.response);
                 stuff.forEach(product => {
                     console.log("oh look its some JSON: " + req.response);
-                    //create elements
-                    let divElement = document.createElement('div');
-                    divElement.setAttribute("class", "row");
                     // adding title to the body of the page
                     let column = document.createElement('div');
                     column.setAttribute("class", "col-sm-4");// create column item
@@ -50,9 +47,8 @@ function displayProducts() {
                     let updateB = document.createElement("button");
                     updateB.setAttribute("id", "update");
                     updateB.setAttribute("class", "button");
-                    updateB.setAttribute("href", "../html/products/update.html");
                     updateB.addEventListener("click", function(){
-                        updateGetProduct(product.id);
+                        window.open("../html/products/updateProduct.html?" + "id=" + product.id);
                     })
                     // Set content to respective ids
                     title.textContent = product.title;
@@ -60,21 +56,21 @@ function displayProducts() {
                     price.textContent = "£ " + product.price;
                     let img = new Image();
                     img.src = product.image;
-                    img.setAttribute("width", "200px");
-                    img.setAttribute("height", "200px");
+                    img.setAttribute("style", "max-width:100%; height:auto;");
                     image.appendChild(img);
                     deleteB.textContent = "DELETE";
+                    updateB.textContent = "UPDATE";
 
 
                     // create indented items
-                    container.appendChild(divElement);
-                    divElement.appendChild(column);
+                    row.appendChild(column);
                     column.appendChild(panel);
                     panel.appendChild(title);
                     panel.appendChild(image);
                     panel.appendChild(description);
                     panel.appendChild(price);
                     panel.appendChild(deleteB);
+                    panel.appendChild(updateB);
                 });
             } else {
                 console.log(
@@ -140,34 +136,36 @@ function deleteProduct(id){
 THIS IS THE UPDATE PRODUCT SECTION
 
  */
-function updateGetProduct(id){
+function updateGetProduct(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const product = urlParams.get('id');
     const reqGet = new XMLHttpRequest();
-    reqGet.open("GET", "http://localhost:8080/getProductById/" + id);
+    reqGet.open("GET", "http://localhost:8080/getProductById/" + product);
     reqGet.onload = () => {
         if (reqGet.status === 200 && reqGet.readyState === 4) {
-                // this loops through the given query
-                let product = JSON.parse(reqGet.response);
-                product.forEach(field => {
-                    console.log("oh look its some JSON: " + req.response);
-                   // populate the fields
-                    let pTitle = document.getElementById("title");
-                    let pPrice = document.getElementById("price");
-                    let pFlavour = document.getElementById("image");
-                    let pStock = document.getElementById("Stock");
-                    let pDesc = document.getElementById("description");
-                    let submit = document.getElementById("submit");
-                    submit.addEventListener("click", function (){
-                        updatePushProduct(field.id);
-                        location.reload();
-                    });
+            // this loops through the given query
+            let product = JSON.parse(reqGet.response);
+            console.log("oh look its some JSON: " + reqGet.response);
+            // populate the fields
+            let pTitle = document.getElementById("title").nodeValue = product.title;
+            let pPrice = document.getElementById("price").nodeValue = parseInt(product.price).toString();
+            let pFlavour = document.getElementById("image");
+            pFlavour.getElementsByClassName("value").item(product.image).nodeValue = product.image;
+            let pStock = document.getElementById("Stock").nodeValue = parseInt(product.stock).toString();
+            let pDesc = document.getElementById("description").nodeValue = product.description;
+            let submit = document.getElementById("submit");
+            submit.addEventListener("click", function () {
+                updatePushProduct(product.id);
+                location.reload();
+            });
 
-                    // Set content to respective ids
-                    pTitle.textContent = field.title;
-                    pPrice.textContent = field.price;
-                    pFlavour.getElementsByClassName("value").item(field.image);
-                    pStock.textContent = field.stock;
-                    pDesc.textContent = "Description: " + field.description;
-                });
+            // Set content to respective ids
+            pTitle.textContent = product.title;
+            pPrice.textContent = product.price;
+            pFlavour.getElementsByClassName("value").item(product.image);
+            pStock.textContent = product.stock;
+            pDesc.textContent = "Description: " + product.description;
         } else {
             console.log("Oh no... handle error");
         }
@@ -177,7 +175,7 @@ function updateGetProduct(id){
 
 /*
 
-
+THIS COVERS THE UPDATE PUSH NEW PRODUCT VALUESx
 
  */
 function updatePushProduct(){
