@@ -15,7 +15,7 @@ jobs:
           command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install -y curl git && sudo apt-get install -y openjdk-8-jdk"
       - run:
           name: Clone Repo & Install Application Dependencies
-          command: ssh $SSH_USER@$SSH_HOST "git clone https://github.com/DKhan1998/Fundamental_Project.git && cd ~/Fundamental_Project"
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && git pull"
       - run:
           name: Maven install
           command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && sudo apt-get install -y maven"
