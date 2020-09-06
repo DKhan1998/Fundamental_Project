@@ -1,8 +1,4 @@
 version: 2.1
-
-orbs:
-  maven: circleci/maven@0.0.12
-
 jobs:
   test:
     machine:
@@ -14,14 +10,14 @@ jobs:
       enabled: true
     steps:
       - run:
-          name: Install NodeJS & NPM
-          command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install -y curl git && curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install -y nodejs"
+          name: Install Java & Maven
+          command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install -y curl git && sudo apt-get install -y openjdk-8-jdk"
       - run:
           name: Clone Repo & Install Application Dependencies
-          command: ssh $SSH_USER@$SSH_HOST "git clone git@github.com:DKhan1998/Fundamental_Project.git && cd ~/billyShakes && npm install -y && nvm install -y"
+          command: ssh $SSH_USER@$SSH_HOST "git clone git@github.com:DKhan1998/Fundamental_Project.git && cd ~/billyShakes && nvm install -y"
       - run:
           name: Deploy Application
-          command: ssh $SSH_USER@$SSH_HOST "cd ~/billyShakes && npm run serve"
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/billyShakes && mvn verify"
 workflows:
   version: 2.1
   test-and-deploy:
@@ -30,3 +26,4 @@ workflows:
       - deploy:
           requires:
             - test
+
