@@ -48,7 +48,7 @@ public class ProductController {
         return ResponseEntity.ok(this.productsService.updateProducts(id, products));
     }
 
-    public ResponseEntity<ProductsDTO> updateNoteWithPathParam(@PathParam("id") Long id, @RequestBody Products product){
+    public ResponseEntity<ProductsDTO> updateProductWithPathParam(@PathParam("id") Long id, @RequestBody Products product){
         // localhost:8080/updateNoteWithPathParam?id=1
         return ResponseEntity.ok(this.productsService.updateProducts(id, product));
     }

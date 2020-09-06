@@ -3,7 +3,30 @@ version: 2.1
 orbs:
   maven: circleci/maven@0.0.12
 
-workflows:
+jobs:
   maven_test:
+    machine:
+      enabled: true
+    steps:
+      - run: echo "Tests can run here!"
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Install NodeJS & NPM
+          command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install -y curl git && curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && sudo apt-get install -y nodejs"
+      - run:
+          name: Clone Repo & Install Application Dependencies
+          command: ssh $SSH_USER@$SSH_HOST "git clone git@github.com:DKhan1998/Fundamental_Project.git && cd ~/billyShakes && npm install -y && nvm install -y"
+      - run:
+          name: Deploy Application
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/billyShakes && npm run serve"
+workflows:
+  version: 2.1
+  test-and-deploy:
     jobs:
-      - maven/test # checkout, build, test, and upload test results
+      - maven/test
+      - deploy:
+          requires:
+            - maven_test

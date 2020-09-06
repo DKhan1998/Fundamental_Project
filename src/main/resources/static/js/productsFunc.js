@@ -46,9 +46,9 @@ function displayProducts() {
 
                     let updateB = document.createElement("button");
                     updateB.setAttribute("id", "update");
-                    updateB.setAttribute("class", "button");
+                    updateB.setAttribute("class", "button ");
                     updateB.addEventListener("click", function(){
-                        window.open("../html/products/updateProduct.html?" + "id=" + product.id);
+                        window.open("../html/products/updateProduct.html?" + "id=" + product.id, "_self");
                     })
                     // Set content to respective ids
                     title.textContent = product.title;
@@ -146,26 +146,16 @@ function updateGetProduct(){
         if (reqGet.status === 200 && reqGet.readyState === 4) {
             // this loops through the given query
             let product = JSON.parse(reqGet.response);
-            console.log("oh look its some JSON: " + reqGet.response);
             // populate the fields
-            let pTitle = document.getElementById("title").nodeValue = product.title;
-            let pPrice = document.getElementById("price").nodeValue = parseInt(product.price).toString();
-            let pFlavour = document.getElementById("image");
-            pFlavour.getElementsByClassName("value").item(product.image).nodeValue = product.image;
-            let pStock = document.getElementById("Stock").nodeValue = parseInt(product.stock).toString();
-            let pDesc = document.getElementById("description").nodeValue = product.description;
-            let submit = document.getElementById("submit");
-            submit.addEventListener("click", function () {
+            document.getElementById("title").setAttribute("placeholder", product.title);
+            document.getElementById("price").setAttribute("placeholder", product.price);
+            document.getElementById("stock").setAttribute("placeholder", product.stock);
+            document.getElementById("description").setAttribute("placeholder", product.description);
+            let deleteB = document.getElementById("submit");
+            deleteB.setAttribute("class", "button");
+            deleteB.addEventListener("click", function (){
                 updatePushProduct(product.id);
-                location.reload();
             });
-
-            // Set content to respective ids
-            pTitle.textContent = product.title;
-            pPrice.textContent = product.price;
-            pFlavour.getElementsByClassName("value").item(product.image);
-            pStock.textContent = product.stock;
-            pDesc.textContent = "Description: " + product.description;
         } else {
             console.log("Oh no... handle error");
         }
@@ -178,21 +168,33 @@ function updateGetProduct(){
 THIS COVERS THE UPDATE PUSH NEW PRODUCT VALUESx
 
  */
-function updatePushProduct(){
+function updatePushProduct(id){
+    console.log("id received = " + id);
+    let elements = document.getElementById("updateForm").elements;
+    let obj = {};
+    for(let i = 0 ; i < elements.length - 1 ; i++){
+        let item = elements.item(i);
+        console.log(item.value);
+        if(item.name === "image"){
+            obj[item.name] = item.value;
+            console.log( "from if : " + obj[item.name]);
+        } else if (item.value === "") {
+            obj[item.name] = item.getAttribute("placeholder").valueOf();
+            console.log( "from else if : " + obj[item.name]);
+        } else {
+            obj[item.name] = item.value;
+            console.log("from else : " + obj[item.name]);
+        }
+    }
     const req = new XMLHttpRequest();
     req.open("PUT", "http://localhost:8080/updateProduct/" + id);
     req.onload = () => {
         if (req.status === 200 && req.readyState === 4) {
             console.log("Server Responded with: " + req.responseText);
-            let elements = document.getElementById("productForm").elements;
-            let obj = {};
-            for(let i = 0 ; i < elements.length - 1 ; i++){
-                let item = elements.item(i);
-                obj[item.name] = item.value;
-            }
         } else {
             console.log("Oops...");
         }
     };
-    req.send();
+    req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    req.send(JSON.stringify({title: obj.title, image: obj.image, description: obj.description, price: obj.price, stock: obj.stock}));
 }
