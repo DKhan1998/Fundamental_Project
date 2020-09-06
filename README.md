@@ -6,22 +6,6 @@
 This project aims designed to demonstrate my skills and knowledge in incorporating "CRUD" (Create, Read, Update, Delete).
 The project will use different project management and development methodologies to implement CRUD into the web application.
 
-## Contents
-
----
-
-* [**Brief**](#Brief)
-* [Constraints](#Constraints)
-* [Structure](#Structure)
-* [Project Aims](#Project-Aims)
-
-* [**User Stories**](#User-Stories)
-* [User Register Story](#User-Register-Story)
-* [User Login Story](#User-Login-Story)
-* [**Risk Assessment**](#Risk-Assessment)
-
-* [**UML Diagram - Structure**](#UML-Diagram)
-
 ## Brief
 
 This project is an e-commerce application, where users will be able to both sell and purchase different types of products. This project will cover the following aspects of project management and development.
@@ -49,44 +33,30 @@ Below are the requirements that the web-app must adhere to.
 * CI Server: CircleCI
 * Cloud server: GCP virtual machine
 
+### Client Specifications
+
+*   Online Selling platform
+*   Black & White & Pink
+*   Professional but playful
+*   User Register / Login
+*   Post / Edit / Delete products
+
 ### Structure
 
 The application implements the following structure:
 
-* Index - Homepage (Holds and displays products)
-  * User Account
-        *Register / Login - satisfies "Create"
-            *   Full name first/last
-            *Username - Max of 16 characters and number
-            *   Email
-            *   Password
+*   Navigation Bar
 
-        *   View account Details (satisfies "Upgrade")
-            *   Full name
-            *   Username
-            *   Email
-            *   Password
-            *   Address
-            *   Previous Orders
-            *   Help & FAQ's 
-             
-        *   Logout
-        
-        *   Remove Account (satisfies "Delete")
-
-    * Create new Listing (satisfies "Create") - (must be a user)
-      * Product Name
-        * Product Image
-        * Product Price
-        * Category
-
-    * View Already listed products (satisfies "Read")
-
-    * Click Product
-      * Product displays
-      * Add to basket
-        * Configure listing (if owned by user) - (satisfies "Edit/Update")
-        * Remove Listing (if owned by user) - (satisfies "Delete")
+    *   + Add Item, Account, Orders, Logout
+*   A table 6 columns wide
+    *   On column 1 row 1 add tablet for creating a new listing.
+    *   Next tablets represent a product
+        *   Product Image
+        *   Product Name
+        *   Product Price
+    *   Contact Information:
+        *   contact form
+        *   contact links
 
 ### Project Aims
 
@@ -98,7 +68,7 @@ The application implements the following structure:
 
 ## User Stories
 
-### User Register Story
+### User Register Story - Planning 
 
 Upon entering the website, products will be visible to anyone who enters.
 However, to purchase or sell a product a user must create or have already created an account.
@@ -115,16 +85,17 @@ When found the user can chose between those options, when registering the user m
 
 Once completed registration, the user will be allowed to purchase and sell products on the site.
 
-### User Login Story
+### User Login Story - MVP
 
-When a customer returns to the site, they are able to access the same features i.e. Add new products,
-update account features and purchase products, by logging into their account.
-The user must enter their correct details;
+Upon entering the website, products will be visible to anyone who enters. 
+The user will be allowed to purchase products by clicking on the Order button.
+An order will then be created for the user, which they can edit or remove later on.  
+A user will also have the power to Add New Listing to the product database, 
+through the use of a button within the navigation bar. 
+This will take them to a different page, 
+where they may add the details of the product an image from a selection off them and then submit the product.
 
-* Username/Email
-* Password
-
-Once they have entered their details they will be redirected to the home page where the user can now access the features above.
+Once that's completed the user can then manipulate and view this product at the home page where this will be displayed.
 
 ## Risk Assessment
 
@@ -143,14 +114,14 @@ Once they have entered their details they will be redirected to the home page wh
 
 ---
 
-![UML Diagram](umlDiagram.png)
+![UML Diagram](imagesReadMe/umlDiagram.png)
 
 ## ERD Diagram
 
 ---
 
 Here we attempt to design a framework for the database by using an ERD or Entity Relationship Diagram.
-![UML Diagram](diagram.png)
+![UML Diagram](imagesReadMe/diagram.png)
 
 
 # Project Structure
@@ -161,7 +132,79 @@ Here we attempt to design a framework for the database by using an ERD or Entity
 
 *   JAVA:
     *   Build secure, robust and scalable web applications
-        
     *   Its both the programming language used to build responsive web-apps, and the core structure in which they are built on.
-       
     *   Used to format JSON queries to be presented on the website.
+
+*   HTML5, CSS3, BOOTSTRAP :
+    *   Creates responsive web-applications
+    *   Used to create, display and manipulate stored data
+    *   Can run instantaneously on most web browsers (in most cases)
+    *   Offers a range of packages and tools to implement functionality on a webpage.
+
+*   JSON / SQL :
+    *   JSON is supported by most languages
+    *   SQL & JSON can be used together
+    *   SQL communicates with the server through request / response
+    *   JSON formats the request / response
+
+## Technologies
+
+---
+
+*   Google Cloud Platform
+    *   Resources are instant, reliable and available.
+    *   Complete control over resources, usage and flexibility
+    *   Design and deploy nearly any website-serving system you want / need.
+
+*   Circle CI :
+    *   Offers fast, reliable and automated build & deploy functionality
+    *   Simple progress structure
+    *   Can be optimized for speed 
+    *   Can be task specific, i.e. testing, building, acquiring prerequisites and packages
+    *   Allows for performance specific pricing, simplifying running costs.
+
+*   Codacy : 
+    *   Catches code that does not adhere to recent coding standards
+    *   Provides a comprehensive design, understand your code, errors and improvements.
+    *   Clear visualization of work and improvement.
+
+*   GitHub - Git :
+    *   Allows for remote work with teams and individuals
+    *   Provides a simple way to safely store and retrieve the project.
+    *   Can be easily distributed and allow for collaboration
+    *   Simple backup, rerolled, commit, push and fetch functionality
+
+*   Postman : 
+    *   A great tool when trying to dissect RESTful APIs
+    *   Simplifies generating html request, rather than writing code.
+    *   It’s simple to use and navigate
+    *   Automated tests can be easily set up using the Postman API testing tool
+
+
+## Web-Structure
+
+---
+
+*   Index  (satisfies “READ")
+*   Create new Listing (satisfies “CREATE") 
+    *   Product Name
+    *   Product Image
+    *   Product Price
+    *   Product Stock
+*   Delete product (satisfies “DELETE”)
+*   Configure listing (satisfies “UPDATE")
+
+## CIRCLE CI
+
+---
+
+![CIRCLE_CI Overview](imagesReadMe/CircleCI-Overview.png);
+![CIRCLE_CI Depth Analysis](imagesReadMe/CIRCLE_CI-Depth.png);
+
+## GCP VM Instance
+
+---
+
+![GCP VM](imagesReadMe/gcp.png)
+
+
