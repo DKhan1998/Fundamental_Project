@@ -81,7 +81,7 @@ function displayProducts() {
             console.log("Oh no... handle error");
         }
     }; // append all products
-    req.open("GET", "http://localhost:8080/allProducts");
+    req.open("GET", "http://35.230.158.36:8080/allProducts");
     req.send();
 }
 
@@ -99,7 +99,7 @@ function createProduct(){
     }
 
     const req = new XMLHttpRequest();
-    req.open("POST", "http://localhost:8080/createProduct");
+    req.open("POST", "http://35.230.158.36:8080/createProduct");
     req.onload = () => {
         if (req.status === 200 && req.readyState === 4) {
             console.log("Server Responded with: " + req.responseText);
@@ -120,7 +120,7 @@ THIS IS THE DELETE PRODUCT SECTION
  */
 function deleteProduct(id){
     const req = new XMLHttpRequest();
-    req.open("DELETE", "http://localhost:8080/deleteProduct/" + id);
+    req.open("DELETE", "http://35.230.158.36:8080/deleteProduct/" + id);
     req.onload = () => {
         if (req.status === 200 && req.readyState === 4) {
             console.log("Server Responded with: " + req.responseText);
@@ -141,7 +141,7 @@ function updateGetProduct(){
     const urlParams = new URLSearchParams(queryString);
     const product = urlParams.get('id');
     const reqGet = new XMLHttpRequest();
-    reqGet.open("GET", "http://localhost:8080/getProductById/" + product);
+    reqGet.open("GET", "http://35.230.158.36:8080/getProductById/" + product);
     reqGet.onload = () => {
         if (reqGet.status === 200 && reqGet.readyState === 4) {
             // this loops through the given query
@@ -151,9 +151,9 @@ function updateGetProduct(){
             document.getElementById("price").setAttribute("placeholder", product.price);
             document.getElementById("stock").setAttribute("placeholder", product.stock);
             document.getElementById("description").setAttribute("placeholder", product.description);
-            let deleteB = document.getElementById("submit");
-            deleteB.setAttribute("class", "button");
-            deleteB.addEventListener("click", function (){
+            let updateB = document.getElementById("submit");
+            updateB.setAttribute("class", "button");
+            updateB.addEventListener("click", function (){
                 updatePushProduct(product.id);
             });
         } else {
@@ -187,7 +187,7 @@ function updatePushProduct(id){
         }
     }
     const req = new XMLHttpRequest();
-    req.open("PUT", "http://localhost:8080/updateProduct/" + id);
+    req.open("PUT", "http://35.230.158.36:8080/updateProduct/" + id);
     req.onload = () => {
         if (req.status === 200 && req.readyState === 4) {
             console.log("Server Responded with: " + req.responseText);
