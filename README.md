@@ -151,3 +151,17 @@ Once they have entered their details they will be redirected to the home page wh
 
 Here we attempt to design a framework for the database by using an ERD or Entity Relationship Diagram.
 ![UML Diagram](diagram.png)
+
+
+# Project Structure
+
+---
+
+## Languages
+
+*   JAVA:
+    *   Build secure, robust and scalable web applications
+        
+    *   Its both the programming language used to build responsive web-apps, and the core structure in which they are built on.
+       
+    *   Used to format JSON queries to be presented on the website.

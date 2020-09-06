@@ -50,6 +50,8 @@ function displayProducts() {
                     updateB.addEventListener("click", function(){
                         window.open("../html/products/updateProduct.html?" + "id=" + product.id, "_self");
                     })
+
+
                     // Set content to respective ids
                     title.textContent = product.title;
                     description.textContent = "Description: " + product.description;
