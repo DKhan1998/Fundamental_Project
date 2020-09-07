@@ -21,7 +21,7 @@ jobs:
           command: ssh $SSH_USER@$SSH_HOST "git clone https://github.com/DKhan1998/Fundamental_Project.git"
       - run:
           name: Deploy Application
-          command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && mvn clean package -Dmaven.test.skip=true"
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && mvn clean package -Dmaven.test.skip=true spring-boot:run"
 workflows:
   version: 2.1
   test-and-deploy:
