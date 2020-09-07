@@ -12,7 +12,7 @@ jobs:
     steps:
       - run:
           name: Install Java & Maven
-          command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install -y git && sudo apt-get install -y openjdk-8-jdk && mvn install -Dmaven.test.skip=true"
+          command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install -y git openjdk-8-jdk maven"
       - run:
           name: Pull repository
           command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && git pull"
