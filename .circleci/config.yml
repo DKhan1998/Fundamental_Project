@@ -21,7 +21,7 @@ jobs:
           command: ssh $SSH_USER@$SSH_HOST "git clone https://github.com/DKhan1998/Fundamental_Project.git"
       - run:
           name: Deploy Application
-          command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project &&  mvn clean package  && java -war billyshakes-0.0.1-SNAPSHOT.war"
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project &&  mvn clean install -DskipTests && java -jar billyshakes-0.0.1-SNAPSHOT.jar"
 workflows:
   version: 2.1
   test-and-deploy:
