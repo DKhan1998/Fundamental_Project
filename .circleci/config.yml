@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  maven: circleci/maven@0.0.12
+
 jobs:
   test:
     machine:
@@ -21,7 +24,7 @@ jobs:
           command: ssh $SSH_USER@$SSH_HOST "git clone https://github.com/DKhan1998/Fundamental_Project.git"
       - run:
           name: Deploy Application
-          command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && mvn clean package -Dmaven.test.skip=true && java -jar billyshakes-1.0.0.SNAPSHOT.jar"
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && ./mvnw -Dmaven.test.skip=true package && java -jar billyshakes-1.0.0.SNAPSHOT.jar"
 workflows:
   version: 2.1
   test-and-deploy:
