@@ -14,8 +14,11 @@ jobs:
           name: Install Java & Maven
           command: ssh $SSH_USER@$SSH_HOST "sudo apt-get update && sudo apt-get install -y git openjdk-8-jdk maven"
       - run:
+          name: CLear Repo
+          command: ssh $SSH_USER@$SSH_HOST "rm -rf Fundamental_Project"
+      - run:
           name: Pull repository
-          command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && git pull"
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && git clone -y git@github.com:DKhan1998/Fundamental_Project.git"
       - run:
           name: Deploy Application
           command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project &&  mvn clean package  && java -jar billyshakes-0.0.1-SNAPSHOT.jar"
