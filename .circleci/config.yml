@@ -19,9 +19,10 @@ jobs:
       - run:
           name: Maven install
           command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && sudo apt-get install -y maven"
+
       - run:
           name: Deploy Application
-          command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && mvn spring-boot:run"
+          command: ssh $SSH_USER@$SSH_HOST "cd ~/Fundamental_Project && mvn verify && mvn -Dmaven.test.skip=true spring-boot:run"
 workflows:
   version: 2.1
   test-and-deploy:
