@@ -64,7 +64,7 @@ function displayOrders() {
             console.log("Oh no... handle error");
         }
     }; // append all products
-    OrderReq.open("GET", "http://35.230.158.36:8080/allProducts");
+    OrderReq.open("GET", "http://localhost:8080/allProducts");
     OrderReq.send();
 }
 
@@ -77,7 +77,7 @@ function createOrder(){
     }
 
     const OrderReq = new XMLHttpRequest();
-    OrderReq.open("POST", "http://35.230.158.36:8080/createOrder");
+    OrderReq.open("POST", "http://localhost:8080/createOrder");
     OrderReq.onload = () => {
         if (OrderReq.status === 200 && OrderReq.readyState === 4) {
             console.log("Server Responded with: " + OrderReq.responseText);
