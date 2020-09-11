@@ -8,7 +8,6 @@ public class BillyshakesApplication {
 
     public static void main(String[] args) {
        SpringApplication.run(BillyshakesApplication.class, args);
-
     }
 
 }
