@@ -18,7 +18,6 @@ public class Orders {
     private List<Products> products = new ArrayList<>();
 
     @Column
-    @GeneratedValue
     private String orderDate;
 
     @Column

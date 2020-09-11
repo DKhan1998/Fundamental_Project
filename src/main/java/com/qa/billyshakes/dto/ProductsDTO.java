@@ -1,7 +1,5 @@
 package com.qa.billyshakes.dto;
 
-import javax.persistence.Column;
-
 public class ProductsDTO {
 
     private Long id;

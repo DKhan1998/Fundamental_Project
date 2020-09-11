@@ -49,7 +49,6 @@ public class ProductsService {
         update.setDescription(products.getDescription());
         update.setPrice(products.getPrice());
         update.setStock(products.getStock());
-        //update.setImage(products.getImage());
         return this.mapToDTO(this.pRepo.save(update));
     }
 
